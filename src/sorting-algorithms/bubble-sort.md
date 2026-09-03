@@ -16,12 +16,12 @@ void bubble_sort(void* arr, size_t length, size_t ele_size, CompareFn compare_fn
         return;
     }
 
-    void* temp = malloc(ele_size);
+    char* temp = malloc(ele_size);
     for (size_t i = 0; i < length - 1; i++) {
         bool swapped = false;
         for (size_t j = 0; j < length - i - 1; j++) {
-            void* ptr_a = &arr_ptr[j * ele_size];
-            void* ptr_b = ptr_a + ele_size;
+            char* ptr_a = &arr_ptr[j * ele_size];
+            char* ptr_b = ptr_a + ele_size;
             if (compare_fn(ptr_a, ptr_b) > 0) {
                 memcpy(temp, ptr_a, ele_size);
                 memcpy(ptr_a, ptr_b, ele_size);
