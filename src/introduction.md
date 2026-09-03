@@ -11,9 +11,6 @@ The programming languages covered in this book are:
 - C++
 - Go
 - Java
-- Julia
-- Kotlin
 - Python
 - Rust
-- Swift
 - TypeScript
