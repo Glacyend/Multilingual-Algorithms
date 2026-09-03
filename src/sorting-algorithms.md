@@ -1,3 +1,3 @@
 # Sorting Algorithms
 
-- [Bubble Sort](sorting-algorithms-folder/bubble-sort.md)
+- [Bubble Sort](sorting-algorithms/bubble-sort.md)
