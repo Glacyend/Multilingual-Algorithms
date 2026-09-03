@@ -1,10 +1,10 @@
-# 介绍
+# Introduction
 
-本书收录了很多算法的各种编程语言实现，以供参考和对比。
+This book includes implementations of many algorithms in various programming languages, for reference and comparison.
 
-所有实现代码均平衡考虑了演示的简洁性和在实际应用中的安全性与通用性。但为了不让简洁性遭到太大的破坏，没有太过于注重安全性与通用性细节。
+All code implementations strike a balance between simplicity for demonstration and security and generality for practical use. However, to avoid compromising the simplicity too much, we have not focused overly on the details of security and generality.
 
-本书提供的编程语言有：
+The programming languages covered in this book are:
 
 - C
 - C#
