@@ -2,3 +2,9 @@
 title = "Multilingual Algorithms"
 authors = ["Glacyend"]
 language = "en"
+
+[preprocessor.numbering]
+command = "mdbook-numbering"
+
+[preprocessor.numbering.code]
+enable = true
