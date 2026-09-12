@@ -16,7 +16,7 @@ void bubble_sort(void* arr, size_t length, size_t ele_size, CompareFn compare_fn
         return;
     }
 
-    char* temp = malloc(ele_size);
+    char* temp = (char*)malloc(ele_size);
     for (size_t i = 0; i < length - 1; i++) {
         bool swapped = false;
         for (size_t j = 0; j < length - i - 1; j++) {
@@ -43,7 +43,7 @@ void bubble_sort(void* arr, size_t length, size_t ele_size, CompareFn compare_fn
 ```csharp
 namespace Sorting {
     public static class Sorter {
-        public static void BubbleSort<T>(Span<T> arr) where T: IComparable<T> {
+        public static void BubbleSort<T>(Span<T> arr) where T : IComparable<T> {
             if (arr.Length <= 1) {
                 return;
             }
@@ -105,7 +105,7 @@ namespace sorting {
 ## Go
 
 ```go
-package package
+package sorting
 
 import (
 	"cmp"
@@ -116,13 +116,13 @@ func BubbleSort[T cmp.Ordered](arr []T) {
 		return
 	}
 
-	n := len(arr);
+	n := len(arr)
 
 	for i := range n - 1 {
 		swapped := false
 		for j := range n - i - 1 {
-			if arr[j] > arr[j + 1] {
-				arr[j], arr[j + 1] = arr[j + 1], arr[j]
+			if arr[j] > arr[j+1] {
+				arr[j], arr[j+1] = arr[j+1], arr[j]
 				swapped = true
 			}
 		}
