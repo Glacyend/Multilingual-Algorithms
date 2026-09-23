@@ -10,22 +10,20 @@
 typedef int (*CompareFn)(const void* a, const void* b);
 
 void bubble_sort(void* arr, size_t length, size_t ele_size, CompareFn compare_fn) {
-    char* arr_ptr = (char*)arr;
-
     if (length <= 1) {
         return;
     }
 
-    char* temp = (char*)malloc(ele_size);
-    for (size_t i = 0; i < length - 1; i++) {
+    unsigned char* arr_ptr = (unsigned char*)arr;
+    unsigned char* temp = (unsigned char*)malloc(ele_size);
+
+    for (unsigned char* end = arr_ptr + (length - 1) * ele_size; end > arr_ptr; end -= ele_size) {
         bool swapped = false;
-        for (size_t j = 0; j < length - i - 1; j++) {
-            char* ptr_a = &arr_ptr[j * ele_size];
-            char* ptr_b = ptr_a + ele_size;
-            if (compare_fn(ptr_a, ptr_b) > 0) {
-                memcpy(temp, ptr_a, ele_size);
-                memcpy(ptr_a, ptr_b, ele_size);
-                memcpy(ptr_b, temp, ele_size);
+        for (unsigned char* ptr = arr_ptr; ptr < end; ptr += ele_size) {
+            if (compare_fn(ptr, ptr + ele_size) > 0) {
+                memcpy(temp, ptr, ele_size);
+                memcpy(ptr, ptr + ele_size, ele_size);
+                memcpy(ptr + ele_size, temp, ele_size);
                 swapped = true;
             }
         }
@@ -136,23 +134,21 @@ func BubbleSort[T cmp.Ordered](arr []T) {
 ## Java
 
 ```java
-import java.util.List;
-
 class Sorting {
-    public static <T extends Comparable<T>> void bubbleSort(List<T> arr) {
-        if (arr.size() <= 1) {
+    public static <T extends Comparable<T>> void bubbleSort(T[] arr) {
+        if (arr.length <= 1) {
             return;
         }
 
-        int n = arr.size();
+        int n = arr.length;
 
         for (int i = 0; i < n - 1; i++) {
             boolean swapped = false;
             for (int j = 0; j < n - i - 1; j++) {
-                if (arr.get(j).compareTo(arr.get(j + 1)) > 0) {
-                    T temp = arr.get(j);
-                    arr.set(j, arr.get(j + 1));
-                    arr.set(j + 1, temp);
+                if (arr[j].compareTo(arr[j + 1]) > 0) {
+                    T temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                     swapped = true;
                 }
             }
@@ -167,9 +163,14 @@ class Sorting {
 ## Python
 
 ```python
+from typing import Protocol, Self
+
+class SupportsGt(Protocol):
+    def __gt__(self, other: Self, /) -> bool: ...
+
 class Sorting:
     @staticmethod
-    def bubble_sort(arr: list):
+    def bubble_sort[T: SupportsGt](arr: list[T]):
         if len(arr) <= 1:
             return
 
@@ -215,26 +216,17 @@ pub mod sorting {
 ## TypeScript
 
 ```typescript
-export function bubbleSort<T>(arr: T[], compareFn?: (a: T, b: T) => number) {
+export function bubbleSort<T>(arr: T[], compareFn: (a: T, b: T) => number) {
     if (arr.length <= 1) {
         return;
     }
 
     const n = arr.length;
-    const cmp = compareFn ?? ((a: T, b: T): number => {
-        if (a < b) {
-            return -1;
-        } else if (a > b) {
-            return 1;
-        } else {
-            return 0;
-        }
-    });
 
     for (let i = 0; i < n - 1; i++) {
         let swapped = false;
         for (let j = 0; j < n - i - 1; j++) {
-            if (cmp(arr[j], arr[j + 1]) > 0) {
+            if (compareFn(arr[j], arr[j + 1]) > 0) {
                 [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
                 swapped = true;
             }
