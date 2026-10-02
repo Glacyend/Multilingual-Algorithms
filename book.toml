@@ -2,3 +2,6 @@
 title = "Multilingual Algorithms"
 authors = ["Glacyend"]
 language = "en"
+
+[preprocessor.katex]
+after = ["links"]
