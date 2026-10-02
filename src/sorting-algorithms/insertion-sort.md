@@ -121,7 +121,7 @@ func InsertionSort[T cmp.Ordered](arr []T) {
 ## Java
 
 ```java
-class Sorting {
+public class Sorting {
     public static <T extends Comparable<T>> void insertionSort(T[] arr) {
         if (arr.length <= 1) {
             return;

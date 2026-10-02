@@ -134,7 +134,7 @@ func BubbleSort[T cmp.Ordered](arr []T) {
 ## Java
 
 ```java
-class Sorting {
+public class Sorting {
     public static <T extends Comparable<T>> void bubbleSort(T[] arr) {
         if (arr.length <= 1) {
             return;
