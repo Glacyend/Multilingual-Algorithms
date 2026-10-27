@@ -35,19 +35,25 @@ void insertion_sort(void* arr, size_t length, size_t ele_size, CompareFn compare
 ## C#
 
 ```csharp
-namespace Sorting {
-    public static class Sorter {
-        public static void InsertionSort<T>(Span<T> arr) where T : IComparable<T> {
-            if (arr.Length <= 1) {
+namespace Sorting
+{
+    public static class Sorter
+    {
+        public static void InsertionSort<T>(Span<T> arr) where T : IComparable<T>
+        {
+            if (arr.Length <= 1)
+            {
                 return;
             }
 
             int n = arr.Length;
 
-            for (int i = 1; i < n; i++) {
+            for (int i = 1; i < n; i++)
+            {
                 T key = arr[i];
                 int j = i;
-                while (j > 0 && key.CompareTo(arr[j - 1]) < 0) {
+                while (j > 0 && key.CompareTo(arr[j - 1]) < 0)
+                {
                     arr[j] = arr[j - 1];
                     j--;
                 }

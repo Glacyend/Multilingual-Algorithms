@@ -118,30 +118,37 @@ void union_find_add_elements(UnionFind* uf, size_t cnt) {
 ## C#
 
 ```csharp
-namespace DataStructures {
-    public class UnionFind {
+namespace DataStructures
+{
+    public class UnionFind
+    {
         private int elemCount;
         private int setCount;
         private int[] father;
         private int[] size;
 
-        public UnionFind(int cnt) {
+        public UnionFind(int cnt)
+        {
             elemCount = cnt;
             setCount = cnt;
             father = new int[cnt];
             size = new int[cnt];
-            for (int i = 0; i < cnt; i++) {
+            for (int i = 0; i < cnt; i++)
+            {
                 father[i] = i;
                 size[i] = 1;
             }
         }
 
-        private int FindRoot(int x) {
+        private int FindRoot(int x)
+        {
             int root = x;
-            while (father[root] != root) {
+            while (father[root] != root)
+            {
                 root = father[root];
             }
-            while (father[x] != root) {
+            while (father[x] != root)
+            {
                 int next = father[x];
                 father[x] = root;
                 x = next;
@@ -151,11 +158,14 @@ namespace DataStructures {
 
         public bool Connected(int x, int y) => FindRoot(x) == FindRoot(y);
 
-        public void Unite(int x, int y) {
+        public void Unite(int x, int y)
+        {
             int rootX = FindRoot(x);
             int rootY = FindRoot(y);
-            if (rootX != rootY) {
-                if (size[rootX] < size[rootY]) {
+            if (rootX != rootY)
+            {
+                if (size[rootX] < size[rootY])
+                {
                     (rootX, rootY) = (rootY, rootX);
                 }
                 father[rootY] = rootX;
@@ -170,15 +180,18 @@ namespace DataStructures {
 
         public int SetsCount => setCount;
 
-        public void AddElements(int cnt) {
-            if (cnt == 0) {
+        public void AddElements(int cnt)
+        {
+            if (cnt == 0)
+            {
                 return;
             }
 
             int newSize = elemCount + cnt;
             Array.Resize(ref father, newSize);
             Array.Resize(ref size, newSize);
-            for (int i = elemCount; i < newSize; i++) {
+            for (int i = elemCount; i < newSize; i++)
+            {
                 father[i] = i;
                 size[i] = 1;
             }

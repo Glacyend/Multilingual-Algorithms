@@ -39,24 +39,32 @@ void bubble_sort(void* arr, size_t length, size_t ele_size, CompareFn compare_fn
 ## C#
 
 ```csharp
-namespace Sorting {
-    public static class Sorter {
-        public static void BubbleSort<T>(Span<T> arr) where T : IComparable<T> {
-            if (arr.Length <= 1) {
+namespace Sorting
+{
+    public static class Sorter
+    {
+        public static void BubbleSort<T>(Span<T> arr) where T : IComparable<T>
+        {
+            if (arr.Length <= 1)
+            {
                 return;
             }
 
             int n = arr.Length;
 
-            for (int i = 0; i < n - 1; i++) {
+            for (int i = 0; i < n - 1; i++)
+            {
                 bool swapped = false;
-                for (int j = 0; j < n - i - 1; j++) {
-                    if (arr[j].CompareTo(arr[j + 1]) > 0) {
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (arr[j].CompareTo(arr[j + 1]) > 0)
+                    {
                         (arr[j], arr[j + 1]) = (arr[j + 1], arr[j]);
                         swapped = true;
                     }
                 }
-                if (!swapped) {
+                if (!swapped)
+                {
                     break;
                 }
             }
