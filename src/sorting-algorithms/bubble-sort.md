@@ -223,6 +223,33 @@ pub mod sorting {
 }
 ```
 
+## Swift
+
+```swift
+public enum Sorting {
+    public static func bubbleSort<T: Comparable>(_ arr: inout [T]) {
+        guard arr.count > 1 else {
+            return
+        }
+
+        let n = arr.count
+
+        for i in 0..<(n - 1) {
+            var swapped = false
+            for j in 0..<(n - i - 1) {
+                if arr[j] > arr[j + 1] {
+                    arr.swapAt(j, j + 1)
+                    swapped = true
+                }
+            }
+            if !swapped {
+                break
+            }
+        }
+    }
+}
+```
+
 ## TypeScript
 
 ```typescript
