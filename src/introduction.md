@@ -14,3 +14,4 @@ The programming languages covered in this book are:
 - Python
 - Rust
 - TypeScript
+- Swift
