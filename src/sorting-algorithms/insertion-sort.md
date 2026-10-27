@@ -153,8 +153,10 @@ public class Sorting {
 ```python
 from typing import Protocol, Self
 
+
 class SupportsLT(Protocol):
     def __lt__(self, other: Self, /) -> bool: ...
+
 
 class Sorting:
     @staticmethod

@@ -173,8 +173,10 @@ public class Sorting {
 ```python
 from typing import Protocol, Self
 
+
 class SupportsGt(Protocol):
     def __gt__(self, other: Self, /) -> bool: ...
+
 
 class Sorting:
     @staticmethod
