@@ -613,6 +613,77 @@ pub mod data_structures {
 }
 ```
 
+## Swift
+
+```swift
+public enum DataStructures {
+    public struct UnionFind {
+        private var elemCount: Int
+        private var setCount: Int
+        private var father: [Int]
+        private var size: [Int]
+
+        public init(count: Int) {
+            elemCount = count
+            setCount = count
+            father = Array(0..<count)
+            size = Array(repeating: 1, count: count)
+        }
+
+        private mutating func findRoot(of x: Int) -> Int {
+            var x = x
+            var root = x
+            while father[root] != root {
+                root = father[root]
+            }
+            while father[x] != root {
+                let next = father[x]
+                father[x] = root
+                x = next
+            }
+            return root
+        }
+
+        public mutating func connected(x: Int, y: Int) -> Bool {
+            findRoot(of: x) == findRoot(of: y)
+        }
+
+        public mutating func unite(x: Int, y: Int) {
+            var rootX = findRoot(of: x)
+            var rootY = findRoot(of: y)
+            if rootX != rootY {
+                if size[rootX] < size[rootY] {
+                    (rootX, rootY) = (rootY, rootX)
+                }
+                father[rootY] = rootX
+                size[rootX] += size[rootY]
+                setCount -= 1
+            }
+        }
+
+        public mutating func setSize(containing x: Int) -> Int {
+            size[findRoot(of: x)]
+        }
+
+        public var elementsCount: Int { elemCount }
+
+        public var setsCount: Int { setCount }
+
+        public mutating func addElements(count: Int) {
+            guard count > 0 else {
+                return
+            }
+
+            let newSize = elemCount + count
+            father.append(contentsOf: elemCount..<newSize)
+            size.append(contentsOf: repeatElement(1, count: count))
+            elemCount += count
+            setCount += count
+        }
+    }
+}
+```
+
 ## TypeScript
 
 ```typescript
