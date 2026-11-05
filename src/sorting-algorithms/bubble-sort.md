@@ -52,10 +52,10 @@ namespace Sorting
 
             int n = arr.Length;
 
-            for (int i = 0; i < n - 1; i++)
+            for (int i = 0; i < n - 1; ++i)
             {
                 bool swapped = false;
-                for (int j = 0; j < n - i - 1; j++)
+                for (int j = 0; j < n - i - 1; ++j)
                 {
                     if (arr[j].CompareTo(arr[j + 1]) > 0)
                     {
@@ -92,9 +92,9 @@ namespace sorting {
 
         size_t n = arr.size();
 
-        for (size_t i = 0; i < n - 1; i++) {
+        for (size_t i = 0; i < n - 1; ++i) {
             bool swapped = false;
-            for (size_t j = 0; j < n - i - 1; j++) {
+            for (size_t j = 0; j < n - i - 1; ++j) {
                 if (arr[j] > arr[j + 1]) {
                     std::swap(arr[j], arr[j + 1]);
                     swapped = true;
@@ -260,9 +260,9 @@ export function bubbleSort<T>(arr: T[], compareFn: (a: T, b: T) => number) {
 
     const n = arr.length;
 
-    for (let i = 0; i < n - 1; i++) {
+    for (let i = 0; i < n - 1; ++i) {
         let swapped = false;
-        for (let j = 0; j < n - i - 1; j++) {
+        for (let j = 0; j < n - i - 1; ++j) {
             if (compareFn(arr[j], arr[j + 1]) > 0) {
                 [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
                 swapped = true;

@@ -39,7 +39,7 @@ void union_find_init(UnionFind* uf, size_t cnt) {
     uf->set_count = cnt;
     uf->father = (size_t*)malloc(sizeof(size_t) * cnt);
     uf->size = (size_t*)malloc(sizeof(size_t) * cnt);
-    for (size_t i = 0; i < cnt; i++) {
+    for (size_t i = 0; i < cnt; ++i) {
         uf->father[i] = i;
         uf->size[i] = 1;
     }
@@ -106,7 +106,7 @@ void union_find_add_elements(UnionFind* uf, size_t cnt) {
     size_t new_size = uf->elem_count + cnt;
     uf->father = (size_t*)realloc(uf->father, sizeof(size_t) * new_size);
     uf->size = (size_t*)realloc(uf->size, sizeof(size_t) * new_size);
-    for (size_t i = uf->elem_count; i < new_size; i++) {
+    for (size_t i = uf->elem_count; i < new_size; ++i) {
         uf->father[i] = i;
         uf->size[i] = 1;
     }
@@ -133,7 +133,7 @@ namespace DataStructures
             setCount = cnt;
             father = new int[cnt];
             size = new int[cnt];
-            for (int i = 0; i < cnt; i++)
+            for (int i = 0; i < cnt; ++i)
             {
                 father[i] = i;
                 size[i] = 1;
@@ -190,7 +190,7 @@ namespace DataStructures
             int newSize = elemCount + cnt;
             Array.Resize(ref father, newSize);
             Array.Resize(ref size, newSize);
-            for (int i = elemCount; i < newSize; i++)
+            for (int i = elemCount; i < newSize; ++i)
             {
                 father[i] = i;
                 size[i] = 1;
@@ -238,7 +238,7 @@ namespace data_structures {
           set_count(cnt),
           father(cnt),
           size(cnt) {
-        for (size_t i = 0; i < cnt; i++) {
+        for (size_t i = 0; i < cnt; ++i) {
             father[i] = i;
             size[i] = 1;
         }
@@ -294,7 +294,7 @@ namespace data_structures {
         size_t new_size = elem_count + cnt;
         father.resize(new_size);
         size.resize(new_size);
-        for (size_t i = elem_count; i < new_size; i++) {
+        for (size_t i = elem_count; i < new_size; ++i) {
             father[i] = i;
             size[i] = 1;
         }

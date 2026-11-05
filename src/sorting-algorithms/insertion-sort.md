@@ -48,7 +48,7 @@ namespace Sorting
 
             int n = arr.Length;
 
-            for (int i = 1; i < n; i++)
+            for (int i = 1; i < n; ++i)
             {
                 T key = arr[i];
                 int j = i;
@@ -83,7 +83,7 @@ namespace sorting {
 
         size_t n = arr.size();
 
-        for (size_t i = 1; i < n; i++) {
+        for (size_t i = 1; i < n; ++i) {
             T key = std::move(arr[i]);
             size_t j = i;
             while (j > 0 && key < arr[j - 1]) {
@@ -277,7 +277,7 @@ export function insertionSort<T>(arr: T[], compareFn: (a: T, b: T) => number) {
 
     const n = arr.length;
 
-    for (let i = 1; i < n; i++) {
+    for (let i = 1; i < n; ++i) {
         const key = arr[i];
         let j = i;
         while (j > 0 && compareFn(key, arr[j - 1]) < 0) {
