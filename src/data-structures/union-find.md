@@ -39,7 +39,7 @@ void union_find_init(UnionFind* uf, size_t cnt) {
     uf->set_count = cnt;
     uf->father = (size_t*)malloc(sizeof(size_t) * cnt);
     uf->size = (size_t*)malloc(sizeof(size_t) * cnt);
-    for (size_t i = 0; i < cnt; ++i) {
+    for (size_t i = 0; i < cnt; i++) {
         uf->father[i] = i;
         uf->size[i] = 1;
     }
@@ -106,7 +106,7 @@ void union_find_add_elements(UnionFind* uf, size_t cnt) {
     size_t new_size = uf->elem_count + cnt;
     uf->father = (size_t*)realloc(uf->father, sizeof(size_t) * new_size);
     uf->size = (size_t*)realloc(uf->size, sizeof(size_t) * new_size);
-    for (size_t i = uf->elem_count; i < new_size; ++i) {
+    for (size_t i = uf->elem_count; i < new_size; i++) {
         uf->father[i] = i;
         uf->size[i] = 1;
     }
